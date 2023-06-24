@@ -27,3 +27,22 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 
 	return (*head);
 }
+
+/**
+ * free_dlistint - frees a dlistint_t list
+ *
+ * @head: header of the double linked list
+ *
+ * Return: void
+ */
+void free_dlistint(stack_t *head)
+{
+	stack_t *temp = head;
+
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		free(head);
+		head = temp;
+	}
+}
