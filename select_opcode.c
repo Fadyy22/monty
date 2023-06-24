@@ -13,6 +13,7 @@ void (*select_opcode(char *code))(stack_t **stack, unsigned int line_number)
 	instruction_t stack_functions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}};
 
 	for (i = 0; stack_functions[i].opcode; i++)
