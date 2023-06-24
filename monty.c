@@ -31,10 +31,12 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while ((fgets(line, 1000, fd)) != NULL)
 	{
 		gvar.argv = get_line_commands(line);
+		if (!gvar.argv[0])
+			continue;
+
 		f = select_opcode(gvar.argv[0]);
 		if (!f)
 		{

@@ -32,7 +32,7 @@ char **get_line_commands(const char *line)
 	char *line_cpy;
 	char *command;
 	char **full_command;
-	char *delim = " \n";
+	char *delim = " \n\t-";
 	int i;
 
 	if (line == NULL)
