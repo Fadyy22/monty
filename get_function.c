@@ -39,7 +39,7 @@ char **get_line_commands(const char *line)
 		return (NULL);
 	line_cpy = _stringdup(line);
 	command = strtok(line_cpy, delim);
-	if (command[0] == 35)
+	if (!command || (command[0] == 35))
 	{
 		free(line_cpy);
 		return (NULL);
