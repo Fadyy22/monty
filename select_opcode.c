@@ -18,6 +18,7 @@ void (*select_opcode(char *code))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}};
 
 	for (i = 0; stack_functions[i].opcode; i++)
