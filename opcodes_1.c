@@ -46,7 +46,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (!isdigit(gvar.argv[1][0]))
+	if (!isdigit(gvar.argv[1][0]) && gvar.argv[1][0] != 45)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
