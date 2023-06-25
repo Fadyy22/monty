@@ -49,3 +49,17 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack) = (*stack)->next;
 	free(temp);
 }
+
+/**
+ * nop - doesn't do anything
+ *
+ * @stack: pointer to the top pointer of the stack
+ * @line_number: line number of the code
+ *
+ * Return: void
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)**stack;
+	(void)line_number;
+}
