@@ -12,7 +12,6 @@ global_t gvar;
 int main(int argc, char *argv[])
 {
 	void (*f)(stack_t **stack, unsigned int line_number) = NULL;
-	FILE *fd;
 	char line[1000];
 
 	gvar.argv = NULL;
@@ -24,13 +23,13 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = fopen(argv[1], "r");
-	if (fd == NULL)
+	gvar.fd = fopen(argv[1], "r");
+	if (gvar.fd == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((fgets(line, 1000, fd)) != NULL)
+	while ((fgets(line, 1000, gvar.fd)) != NULL)
 	{
 		gvar.argv = get_line_commands(line);
 		if (!gvar.argv)
@@ -39,7 +38,7 @@ int main(int argc, char *argv[])
 		if (!f)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", gvar.ln, gvar.argv[0]);
-			fclose(fd);
+			fclose(gvar.fd);
 			free_dlistint(gvar.top);
 			free_full_command(gvar.argv);
 			exit(EXIT_FAILURE);
@@ -48,7 +47,7 @@ int main(int argc, char *argv[])
 		gvar.ln++;
 		free_full_command(gvar.argv);
 	}
-	fclose(fd);
+	fclose(gvar.fd);
 	free_dlistint(gvar.top);
 	return (0);
 }

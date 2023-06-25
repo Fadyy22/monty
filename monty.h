@@ -41,6 +41,7 @@ typedef struct global_s
 {
 	int ln;
 	char **argv;
+	FILE *fd;
 	stack_t *top;
 } global_t;
 
@@ -49,6 +50,7 @@ extern global_t gvar;
 char *_stringdup(const char *input);
 char **get_line_commands(const char *line);
 void free_full_command(char **full_command);
+int count_commands(const char *command);
 void (*select_opcode(char *code))(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);

@@ -36,7 +36,7 @@ char *_stringdup(const char *input)
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int number;
+	int number, i;
 
 	line_number = gvar.ln;
 
@@ -45,13 +45,16 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	if (!isdigit(gvar.argv[1][0]) && gvar.argv[1][0] != 45)
+	for (i = 0; gvar.argv[1][i] != '\0'; i++)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (!isdigit(gvar.argv[1][i]) && gvar.argv[1][0] != 45)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			free_full_command(gvar.argv);
+			fclose(gvar.fd);
+			exit(EXIT_FAILURE);
+		}
 	}
-
 	number = atoi(gvar.argv[1]);
 	add_dnodeint(stack, number);
 }
