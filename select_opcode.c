@@ -24,6 +24,7 @@ void (*select_opcode(char *code))(stack_t **stack, unsigned int line_number)
 		{"mod", mod},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}};
 
 	for (i = 0; stack_functions[i].opcode; i++)
