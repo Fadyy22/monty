@@ -58,3 +58,29 @@ void mod(stack_t **stack, unsigned int line_number)
 	(*stack) = (*stack)->next;
 	free(temp);
 }
+
+/**
+ * pchar - prints the char at the top of the stack, followed by a new line
+ *
+ * @stack: pointer to the top pointer of the stack
+ * @line_number: line number of the code
+ *
+ * Return: void
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	line_number = gvar.ln;
+
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pchar, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n >= 0 && (*stack)->n <= 127)
+		printf("%c\n", (*stack)->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
