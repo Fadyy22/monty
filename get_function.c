@@ -59,6 +59,8 @@ char **get_line_commands(const char *line)
 			exit(EXIT_FAILURE);
 		}
 		strcpy(full_command[i], command);
+		if (strcmp(command, "#") == 0)
+			break;
 		command = strtok(NULL, delim);
 	}
 	free(line_cpy);
