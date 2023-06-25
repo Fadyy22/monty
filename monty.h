@@ -54,6 +54,15 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+/**
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+*/
 
 stack_t *add_dnodeint(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
