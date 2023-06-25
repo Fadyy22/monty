@@ -39,6 +39,12 @@ char **get_line_commands(const char *line)
 		return (NULL);
 
 	line_cpy = _stringdup(line);
+	command = strtok(line_cpy, delim);
+	if (command[0] == 35)
+	{
+		free(line_cpy);
+		return (NULL);
+	}
 	full_command = malloc(sizeof(char *) * 3);
 	if (full_command == NULL)
 	{
@@ -46,7 +52,7 @@ char **get_line_commands(const char *line)
 		free(line_cpy);
 		exit(EXIT_FAILURE);
 	}
-	command = strtok(line_cpy, delim);
+
 	for (i = 0; command != NULL && i < 2; i++)
 	{
 		full_command[i] = malloc(sizeof(char) * strlen(command) + 1);
@@ -59,8 +65,6 @@ char **get_line_commands(const char *line)
 			exit(EXIT_FAILURE);
 		}
 		strcpy(full_command[i], command);
-		if (strcmp(command, "#") == 0)
-			break;
 		command = strtok(NULL, delim);
 	}
 	free(line_cpy);

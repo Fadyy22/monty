@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	while ((fgets(line, 1000, fd)) != NULL)
 	{
 		gvar.argv = get_line_commands(line);
-		if (!gvar.argv[0])
+		if (!gvar.argv)
 			continue;
 
 		f = select_opcode(gvar.argv[0]);

@@ -1,4 +1,4 @@
-push 1 # Hi this is comment
+#push 1
 push 2
 push 10
 push 3
