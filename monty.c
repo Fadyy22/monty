@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	char line[1000];
 
 	gvar.argv = NULL;
-	gvar.ln = 1;
+	gvar.ln = 0;
 	gvar.top = NULL;
 
 	if (argc != 2)
@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
 	}
 	while ((fgets(line, 1000, gvar.fd)) != NULL)
 	{
+		gvar.ln++;
 		gvar.argv = get_line_commands(line);
 		if (!gvar.argv)
 			continue;
@@ -44,7 +45,6 @@ int main(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 		f(&gvar.top, gvar.ln);
-		gvar.ln++;
 		free_full_command(gvar.argv);
 	}
 	fclose(gvar.fd);
