@@ -53,7 +53,7 @@ char **get_line_commands(const char *line)
 	}
 	for (i = 0; command != NULL && i < 2; i++)
 	{
-		full_command[i] = malloc(sizeof(char) * strlen(command) + 1);
+		full_command[i] = malloc(sizeof(char) * (strlen(command) + 1));
 		if (full_command[i] == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
