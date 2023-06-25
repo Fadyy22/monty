@@ -39,7 +39,7 @@ char **get_line_commands(const char *line)
 		return (NULL);
 
 	line_cpy = _stringdup(line);
-	full_command = malloc(sizeof(char *) * 2);
+	full_command = malloc(sizeof(char *) * 3);
 	if (full_command == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -62,5 +62,7 @@ char **get_line_commands(const char *line)
 		command = strtok(NULL, delim);
 	}
 	free(line_cpy);
+	line_cpy = NULL;
+	full_command[i] = NULL;
 	return (full_command);
 }

@@ -41,10 +41,14 @@ int main(int argc, char *argv[])
 		if (!f)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", gvar.ln, gvar.argv[0]);
+			free_full_command(gvar.argv);
 			exit(EXIT_FAILURE);
 		}
 		f(&gvar.top, gvar.ln);
 		gvar.ln++;
+		free_full_command(gvar.argv);
 	}
+	fclose(fd);
+	free_dlistint(gvar.top);
 	return (0);
 }
