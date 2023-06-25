@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 	{
@@ -36,11 +35,12 @@ int main(int argc, char *argv[])
 		gvar.argv = get_line_commands(line);
 		if (!gvar.argv)
 			continue;
-
 		f = select_opcode(gvar.argv[0]);
 		if (!f)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", gvar.ln, gvar.argv[0]);
+			fclose(fd);
+			free_dlistint(gvar.top);
 			free_full_command(gvar.argv);
 			exit(EXIT_FAILURE);
 		}

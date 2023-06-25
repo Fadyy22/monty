@@ -1,3 +1,3 @@
 push 1
-rotr
+pusa 1
 pall
