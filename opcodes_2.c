@@ -92,9 +92,8 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack
- * by the top element of the stack.
- * from the second top element of the stack
+ * divide - divides the second top element of the stack
+ * by the top element of the stack
  *
  * @stack: pointer to the top pointer of the stack
  * @line_number: line number of the code
