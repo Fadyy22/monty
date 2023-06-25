@@ -25,7 +25,7 @@ void swap(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * swap - adds the top two elements of the stack
+ * add - adds the top two elements of the stack
  *
  * @stack: pointer to the top pointer of the stack
  * @line_number: line number of the code
@@ -35,8 +35,8 @@ void swap(stack_t **stack, unsigned int line_number)
 void add(stack_t **stack, unsigned int line_number)
 {
 	int result;
-
 	stack_t *temp = *stack;
+
 	line_number = gvar.ln;
 
 	if (!(*stack) || (*stack)->next == NULL)
